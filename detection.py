@@ -21,14 +21,15 @@ elif(choice=="IMAGE"):
 elif(choice=="VIDEO"):
     vid=st.file_uploader("Upload Video")
     frame=st.empty()
-    if vid:      
+    if vid:    
+            
         tfile=tempfile.NamedTemporaryFile(delete=True)
         tfile.write(vid.read())
         vid=cv2.VideoCapture(tfile.name)
         while(vid.isOpened()):
             flag,img=vid.read()
-            face=detectface.detectMultiScale(img,scaleFactor=1.1,minNeighbors=4)
-            for (x,y,w,h) in face:
-                img=cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),5)
+            #face=detectface.detectMultiScale(img,scaleFactor=1.1,minNeighbors=4)
+            #for (x,y,w,h) in face:
+                #img=cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),5)
             frame.image(img,channels='BGR')
 
