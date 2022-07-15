@@ -21,9 +21,8 @@ elif(choice=="IMAGE"):
 elif(choice=="VIDEO"):
     vid=st.file_uploader("Upload Video")
     frame=st.empty()
-    if vid:    
-        if 'img' not in st.session_state:
-            st.session_state['img']=[]
+    if vid:        
+        l=[]
         tfile=tempfile.NamedTemporaryFile(delete=False)
         tfile.write(vid.read())
         vid=cv2.VideoCapture(tfile.name)
@@ -32,7 +31,7 @@ elif(choice=="VIDEO"):
             face=detectface.detectMultiScale(img,scaleFactor=1.1,minNeighbors=4)
             for (x,y,w,h) in face:
                 img=cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),5)
-            st.session_state['img'].append(img)  
-        for k in st.session_state['img']:
+            l.append(img)  
+        for k in l:
             frame.image(k,channels='BGR')
         
