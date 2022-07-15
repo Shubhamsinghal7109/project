@@ -21,8 +21,8 @@ elif(choice=="IMAGE"):
 elif(choice=="VIDEO"):
     vid=st.file_uploader("Upload Video")
     frame=st.empty()
-    if vid:
-        tfile=tempfile.NamedTemporaryFile(delete=False)
+    if vid:      
+        tfile=tempfile.NamedTemporaryFile(delete=True)
         tfile.write(vid.read())
         vid=cv2.VideoCapture(tfile.name)
         while(vid.isOpened()):
