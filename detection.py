@@ -18,6 +18,7 @@ elif(choice=="IMAGE"):
         for (x,y,w,h) in face:
             img=cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),5)
         st.image(img,channels='BGR')
+        cv2.imwrite('temp.jpg',img)
 elif(choice=="VIDEO"):
     frame=st.empty()
     vid=cv2.VideoCapture("https://www.w3schools.com/html/mov_bbb.mp4")
