@@ -22,16 +22,14 @@ elif(choice=="VIDEO"):
     vid=st.file_uploader("Upload Video")
     frame=st.empty()
     if vid:        
-        l=[]
-        tfile=tempfile.NamedTemporaryFile(delete=False)
-        tfile.write(vid.read())
-        vid=cv2.VideoCapture(tfile.name)
+        #l=[]
+        #tfile=tempfile.NamedTemporaryFile(delete=False)
+        #tfile.write(vid.read())
+        vid=cv2.VideoCapture("https://www.w3schools.com/html/mov_bbb.mp4")
         while(vid.isOpened()):
             flag,img=vid.read()
             #face=detectface.detectMultiScale(img,scaleFactor=1.1,minNeighbors=4)
             #for (x,y,w,h) in face:
-                #img=cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),5)
-            l.append(img)  
-        for k in l:
-            frame.image(k,channels='BGR')
+                #img=cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),5)      
+            frame.image(img,channels='BGR')
         
