@@ -24,8 +24,9 @@ elif(choice=="VIDEO"):
     if vid:    
         if 'img' not in st.session_state:
             st.session_state['img']=0
-        st.session_state['tfile'].write(vid.read())
-        vid=cv2.VideoCapture(st.session_state['tfile'].name)
+        tfile=tempfile.NamedTemporaryFile(delete=False)
+        tfile.write(vid.read())
+        vid=cv2.VideoCapture(tfile.name)
         while(vid.isOpened()):
             flag,st.session_state['img']=vid.read()
             face=detectface.detectMultiScale(img,scaleFactor=1.1,minNeighbors=4)
