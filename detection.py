@@ -32,6 +32,6 @@ elif(choice=="VIDEO"):
             for (x,y,w,h) in face:
                 img=cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),5)
             l.append(img)  
-        for k in l:
-            frame.image(k,channels='BGR')
+            for k in l:
+                frame.image(k,channels='BGR')
         
