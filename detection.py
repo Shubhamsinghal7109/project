@@ -28,10 +28,10 @@ elif(choice=="VIDEO"):
         vid=cv2.VideoCapture(tfile.name)
         while(vid.isOpened()):
             flag,img=vid.read()
-            face=detectface.detectMultiScale(img,scaleFactor=1.1,minNeighbors=4)
-            for (x,y,w,h) in face:
-                img=cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),5)
+            #face=detectface.detectMultiScale(img,scaleFactor=1.1,minNeighbors=4)
+            #for (x,y,w,h) in face:
+                #img=cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),5)
             l.append(img)  
-            for k in l:
-                frame.image(k,channels='BGR')
+        for k in l:
+            frame.image(k,channels='BGR')
         
