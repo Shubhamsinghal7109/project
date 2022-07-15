@@ -22,10 +22,10 @@ elif(choice=="VIDEO"):
     vid=st.file_uploader("Upload Video")
     frame=st.empty()
     if vid:    
-            
-        tfile=tempfile.NamedTemporaryFile(delete=True)
-        tfile.write(vid.read())
-        vid=cv2.VideoCapture(tfile.name)
+        if 'tfile' not in st.session_state:
+            st.session_state['tfile']=tempfile.NamedTemporaryFile(delete=True)
+        st.session_state['tfile'].write(vid.read())
+        vid=cv2.VideoCapture(st.session_state['tfile'].name)
         while(vid.isOpened()):
             flag,img=vid.read()
             #face=detectface.detectMultiScale(img,scaleFactor=1.1,minNeighbors=4)
