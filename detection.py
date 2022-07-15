@@ -34,3 +34,5 @@ elif(choice=="VIDEO"):
                 for (x,y,w,h) in face:
                     st.session_state['img']=cv2.rectangle(st.session_state['img'],(x,y),(x+w,y+h),(0,0,255),5)
                 frame.image(st.session_state['img'],channels='BGR')
+        except:
+            st.text("Error Occured")
